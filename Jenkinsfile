@@ -26,6 +26,12 @@ pipeline {
             }
         }
 
+        stage('Clean Previous Reports') {
+            steps {
+                bat 'if exist reports\\allure-results rmdir /s /q reports\\allure-results'
+            }
+        }
+
         stage('Register Test Account') {
             steps {
                 bat '.venv\\Scripts\\python -m pytest tests/regression/test_register.py --headless'
@@ -41,6 +47,13 @@ pipeline {
 
     post {
         always {
+            script {
+                if (fileExists('reports/allure-results')) {
+                    allure includeProperties: false, results: [[path: 'reports/allure-results']]
+                } else {
+                    echo 'Allure results were not created; skipping report generation.'
+                }
+            }
             archiveArtifacts artifacts: 'reports/html/**, reports/allure-results/**, reports/evidence/**, reports/logs/**', allowEmptyArchive: true
         }
     }
