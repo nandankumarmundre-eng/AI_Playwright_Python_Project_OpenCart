@@ -54,7 +54,7 @@ pipeline {
         always {
             script {
                 if (fileExists('reports/allure-results')) {
-                    allure commandline: 'myAllure', includeProperties: false, results: [[path: 'reports/allure-results']]
+                    allure commandline: 'allurereport', includeProperties: false, results: [[path: 'reports/allure-results']]
                 } else {
                     echo 'Allure results were not created; skipping report generation.'
                 }
