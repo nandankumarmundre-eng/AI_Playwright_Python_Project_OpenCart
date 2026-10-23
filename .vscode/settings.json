@@ -24,5 +24,6 @@
   ],
   "python.testing.cwd": "${workspaceFolder}",
   "python-envs.defaultEnvManager": "ms-python.python:venv",
-  "chat.editing.autoAcceptDelay": 100
+  "chat.editing.autoAcceptDelay": 100,
+  "python.terminal.useEnvFile": true
 }

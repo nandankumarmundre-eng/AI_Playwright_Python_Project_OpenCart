@@ -1,0 +1,29 @@
+from playwright.sync_api import Page
+
+from pages.locators.product_locators import ProductLocators
+from pages.base_page import BasePage
+from pages.shopping_cart_page import ShoppingCartPage
+from utils.playwright_actions import execute_ui_action
+
+
+class ProductPage(BasePage):
+    def __init__(self, page: Page, product_name: str) -> None:
+        super().__init__(page)
+        self.product_name = product_name
+        self.locators = ProductLocators(page, product_name)
+
+    def add_to_cart(self) -> "ProductPage":
+        execute_ui_action(
+            self.page,
+            f"add {self.product_name} to the cart",
+            self.locators.add_to_cart_button.click,
+        )
+        return self
+
+    def open_shopping_cart(self) -> ShoppingCartPage:
+        execute_ui_action(
+            self.page,
+            "open the shopping cart from the success message",
+            self.locators.shopping_cart_link.click,
+        )
+        return ShoppingCartPage(self.page, self.product_name)

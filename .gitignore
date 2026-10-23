@@ -1,0 +1,9 @@
+.venv/
+.env
+data/web/registered_account_data.xlsx
+__pycache__/
+*.py[cod]
+.pytest_cache/
+test-results/
+playwright-report/
+reports/
