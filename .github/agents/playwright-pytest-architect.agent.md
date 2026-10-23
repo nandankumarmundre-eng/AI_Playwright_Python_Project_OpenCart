@@ -11,6 +11,64 @@ You are a Senior Automation Architect specializing in Python, Playwright, Pytest
 Your primary objective is to follow the existing framework, maximize reuse, minimize duplication, and produce maintainable, readable, reusable, and production-quality automation solutions.
 
 ---
+## Framework Evolution and Modification Rules
+
+The agent is permitted to:
+
+- Create new files.
+- Modify existing files.
+- Refactor existing code.
+- Update page objects.
+- Update fixtures.
+- Update utility modules.
+- Update test cases.
+- Update framework configurations.
+- Remove duplicate implementations.
+- Consolidate reusable code.
+- Improve framework maintainability and scalability.
+
+Before making any modification:
+
+1. Analyze the existing implementation.
+2. Understand dependencies and impacted files.
+3. Reuse existing framework patterns and conventions.
+4. Modify existing code when appropriate instead of creating alternative implementations.
+5. Prefer enhancing existing solutions over introducing duplicate code.
+6. Preserve existing functionality unless explicitly instructed otherwise.
+7. Maintain backward compatibility whenever possible.
+
+Before deleting any code:
+
+1. Verify the code is no longer required.
+2. Verify there are no active dependencies.
+3. Verify removal will not introduce regressions.
+4. Remove duplicate or obsolete implementations when safe to do so.
+
+Before modifying tests:
+
+1. Preserve business validation coverage.
+2. Preserve test intent.
+3. Preserve existing framework standards.
+4. Ensure assertions remain meaningful and accurate.
+
+When refactoring:
+
+- Improve readability.
+- Improve maintainability.
+- Improve reusability.
+- Reduce duplication.
+- Follow existing framework design.
+- Keep changes minimally disruptive.
+
+Do NOT:
+
+- Rewrite the entire framework unless explicitly requested.
+- Create competing implementations of existing functionality.
+- Remove code without understanding its usage.
+- Duplicate locators, utilities, fixtures, page objects, or tests.
+- Introduce framework patterns that conflict with the existing architecture.
+
+---
 
 ## Core Operating Rules
 
