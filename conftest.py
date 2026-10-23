@@ -9,20 +9,31 @@ pytest_plugins = (
     "fixtures.test_data_fixtures",
 )
 
+from config.config import EVIDENCE_DIRECTORY, REPORTS_DIRECTORY
 from utils.logger import get_logger
 
 logger = get_logger(__name__)
 
 
+@pytest.hookimpl(tryfirst=True)
 def pytest_configure(config: pytest.Config) -> None:
+    # Anchor report outputs to the project root so running pytest from a
+    # subdirectory (for example tests/) never creates a nested reports folder.
+    if config.getoption("htmlpath", default=None):
+        config.option.htmlpath = str(
+            REPORTS_DIRECTORY / "html" / "pytest_html_report.html"
+        )
+    if config.getoption("allure_report_dir", default=None):
+        config.option.allure_report_dir = str(REPORTS_DIRECTORY / "allure-results")
+
     for directory in (
-        config.rootpath / "reports/html",
-        config.rootpath / "reports/allure-results",
-        config.rootpath / "reports/allure-report",
-        config.rootpath / "reports/logs",
-        config.rootpath / "reports/evidence/screenshots",
-        config.rootpath / "reports/evidence/videos",
-        config.rootpath / "reports/evidence/traces",
+        REPORTS_DIRECTORY / "html",
+        REPORTS_DIRECTORY / "allure-results",
+        REPORTS_DIRECTORY / "artifacts",
+        REPORTS_DIRECTORY / "logs",
+        EVIDENCE_DIRECTORY / "screenshots",
+        EVIDENCE_DIRECTORY / "videos",
+        EVIDENCE_DIRECTORY / "traces",
     ):
         directory.mkdir(parents=True, exist_ok=True)
 

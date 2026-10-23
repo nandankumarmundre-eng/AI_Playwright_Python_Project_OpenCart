@@ -11,7 +11,7 @@ from playwright.sync_api import (
     Page,
 )
 
-from config.config import get_config
+from config.config import EVIDENCE_DIRECTORY, get_config
 from utils.common_utils import safe_filename
 from utils.logger import get_logger
 from utils.screenshot_utils import save_failure_screenshot
@@ -23,7 +23,7 @@ logger = get_logger(__name__)
 def browser_context(
     browser: Browser, request: pytest.FixtureRequest
 ) -> Generator[BrowserContext, None, None]:
-    video_dir = Path("reports") / "evidence" / "videos"
+    video_dir = EVIDENCE_DIRECTORY / "videos"
     video_dir.mkdir(parents=True, exist_ok=True)
     context = browser.new_context(
         no_viewport=_headed_option(request.config),
@@ -62,7 +62,7 @@ def page(
         if report is None or not report.failed:
             report = getattr(request.node, "rep_setup", None)
         failed = report is not None and report.failed
-        evidence_dir = Path("reports") / "evidence"
+        evidence_dir = EVIDENCE_DIRECTORY
         test_name = safe_filename(request.node.nodeid)
 
         if failed:

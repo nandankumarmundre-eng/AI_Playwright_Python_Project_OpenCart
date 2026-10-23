@@ -6,6 +6,9 @@ from config.environments import DEFAULT_ENVIRONMENT, ENVIRONMENT_FILES
 from config.urls import DEFAULT_BASE_URL
 
 CONFIG_DIRECTORY = Path(__file__).resolve().parent
+PROJECT_ROOT = CONFIG_DIRECTORY.parent
+REPORTS_DIRECTORY = PROJECT_ROOT / "reports"
+EVIDENCE_DIRECTORY = REPORTS_DIRECTORY / "evidence"
 DEFAULT_TIMEOUT_MS = 10_000
 
 

@@ -1,9 +1,10 @@
 import logging
-from pathlib import Path
+
+from config.config import REPORTS_DIRECTORY
 
 
 def get_logger(name: str) -> logging.Logger:
-    log_directory = Path("reports") / "logs"
+    log_directory = REPORTS_DIRECTORY / "logs"
     log_directory.mkdir(parents=True, exist_ok=True)
 
     logger = logging.getLogger(name)
