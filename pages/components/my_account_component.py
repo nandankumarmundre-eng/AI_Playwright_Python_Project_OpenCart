@@ -1,4 +1,4 @@
-from playwright.sync_api import Page
+from playwright.sync_api import Locator, Page
 
 from pages.locators.home_locators import HomeLocators
 from pages.login_page import LoginPage
@@ -10,6 +10,10 @@ class MyAccountComponent:
     def __init__(self, page: Page) -> None:
         self.page = page
         self.locators = HomeLocators(page)
+
+    @property
+    def account_menu(self) -> Locator:
+        return self.locators.account_menu
 
     def open_register(self) -> None:
         execute_ui_action(

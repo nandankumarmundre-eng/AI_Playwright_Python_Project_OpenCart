@@ -1,4 +1,4 @@
-from playwright.sync_api import Page
+from playwright.sync_api import Locator, Page
 
 from data.web.models import LoginCredentials
 from pages.locators.login_locators import LoginLocators
@@ -10,6 +10,10 @@ class LoginPage(BasePage):
     def __init__(self, page: Page) -> None:
         super().__init__(page)
         self.locators = LoginLocators(page)
+
+    @property
+    def account_heading(self) -> Locator:
+        return self.locators.account_heading
 
     def login(self, credentials: LoginCredentials) -> None:
         execute_ui_action(

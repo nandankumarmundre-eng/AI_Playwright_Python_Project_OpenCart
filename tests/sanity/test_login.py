@@ -11,10 +11,10 @@ def test_login_redirects_to_account_page(
     page: Page,
     base_url: str,
     login_credentials: LoginCredentials,
-) -> None:
+    ) -> None:
     login_page = login_to_account(page, base_url, login_credentials)
 
     expect(page).to_have_url(
         f"{base_url.rstrip('/')}/index.php?route=account/account"
     )
-    expect(login_page.locators.account_heading).to_be_visible()
+    expect(login_page.account_heading).to_be_visible()

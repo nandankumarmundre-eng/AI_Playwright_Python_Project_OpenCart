@@ -10,4 +10,4 @@ def test_storefront_home_page_loads(page: Page, base_url: str) -> None:
     home_page = HomePage(page, base_url).open()
 
     expect(page).to_have_title("Your Store")
-    expect(home_page.my_account.locators.account_menu).to_be_visible()
+    expect(home_page.my_account.account_menu).to_be_visible()

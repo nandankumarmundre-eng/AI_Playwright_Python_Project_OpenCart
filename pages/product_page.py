@@ -1,4 +1,4 @@
-from playwright.sync_api import Page
+from playwright.sync_api import Locator, Page
 
 from pages.locators.product_locators import ProductLocators
 from pages.base_page import BasePage
@@ -11,6 +11,14 @@ class ProductPage(BasePage):
         super().__init__(page)
         self.product_name = product_name
         self.locators = ProductLocators(page, product_name)
+
+    @property
+    def product_heading(self) -> Locator:
+        return self.locators.product_heading
+
+    @property
+    def add_to_cart_success(self) -> Locator:
+        return self.locators.add_to_cart_success
 
     def add_to_cart(self) -> "ProductPage":
         execute_ui_action(

@@ -1,4 +1,4 @@
-from playwright.sync_api import Page
+from playwright.sync_api import Locator, Page
 
 from data.web.models import RegistrationDetails
 from pages.locators.register_locators import RegisterLocators
@@ -11,6 +11,10 @@ class RegistrationPage(BasePage):
     def __init__(self, page: Page) -> None:
         super().__init__(page)
         self.locators = RegisterLocators(page)
+
+    @property
+    def heading(self) -> Locator:
+        return self.locators.heading
 
     def submit_registration(
         self, details: RegistrationDetails
