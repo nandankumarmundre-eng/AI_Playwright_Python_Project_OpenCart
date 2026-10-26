@@ -1,0 +1,73 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 4 0 R /F2 5 0 R >> >> /Contents 6 0 R >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+6 0 obj
+<< /Length 3966 >>
+stream
+0.10 0.34 0.56 rg 0 748 612 44 re f
+1.000 1.000 1.000 rg BT /F2 9 Tf 48.0 764.0 Td (PLAYWRIGHT + PYTEST) Tj ET
+0.100 0.180 0.280 rg BT /F2 22 Tf 48.0 721.0 Td (Test Automation Workflow) Tj ET
+0.350 0.400 0.470 rg BT /F1 10 Tf 48.0 701.0 Td (A practical reference for designing maintainable UI tests) Tj ET
+0.780 0.830 0.880 RG 1.0 w 48 686 m 564 686 l S
+0.100 0.280 0.460 rg BT /F2 12 Tf 48.0 665.0 Td (Recommended order) Tj ET
+0.130 0.180 0.250 rg BT /F2 9.8 Tf 52.0 646.0 Td (1. Understand the business scenario) Tj ET
+0.200 0.230 0.290 rg BT /F1 8.8 Tf 64.0 633.0 Td (Write down the user journey and expected outcome before choosing implementation details.) Tj ET
+0.130 0.180 0.250 rg BT /F2 9.8 Tf 52.0 615.8 Td (2. Identify pages and components) Tj ET
+0.200 0.230 0.290 rg BT /F1 8.8 Tf 64.0 602.8 Td (Map each step to a page object or reusable UI component. Use a component for a shared part) Tj ET
+0.200 0.230 0.290 rg BT /F1 8.8 Tf 64.0 591.6 Td (of a page; use a page object for a full page.) Tj ET
+0.130 0.180 0.250 rg BT /F2 9.8 Tf 52.0 574.4 Td (3. Identify the required elements) Tj ET
+0.200 0.230 0.290 rg BT /F1 8.8 Tf 64.0 561.4 Td (List the fields, buttons, links, headings, and result areas the flow will use or verify.) Tj ET
+0.130 0.180 0.250 rg BT /F2 9.8 Tf 52.0 544.2 Td (4. Define the locators) Tj ET
+0.200 0.230 0.290 rg BT /F1 8.8 Tf 64.0 531.2 Td (Create or reuse locators in the appropriate locator class. Keep locator definitions focused) Tj ET
+0.200 0.230 0.290 rg BT /F1 8.8 Tf 64.0 520.0 Td (on identifying elements.) Tj ET
+0.130 0.180 0.250 rg BT /F2 9.8 Tf 52.0 502.8 Td (5. Implement page objects and components) Tj ET
+0.200 0.230 0.290 rg BT /F1 8.8 Tf 64.0 489.8 Td (Have each object create/use its locators, expose useful elements, and provide methods for) Tj ET
+0.200 0.230 0.290 rg BT /F1 8.8 Tf 64.0 478.6 Td (page-specific actions. Return the next page object when an action navigates.) Tj ET
+0.130 0.180 0.250 rg BT /F2 9.8 Tf 52.0 461.4 Td (6. Prepare data and fixtures when needed) Tj ET
+0.200 0.230 0.290 rg BT /F1 8.8 Tf 64.0 448.4 Td (Use fixtures for shared, generated, or set-up data. Use the data reader for external) Tj ET
+0.200 0.230 0.290 rg BT /F1 8.8 Tf 64.0 437.2 Td (Excel/JSON data. Keep simple test-specific values in the test when appropriate.) Tj ET
+0.130 0.180 0.250 rg BT /F2 9.8 Tf 52.0 420.0 Td (7. Write the test flow) Tj ET
+0.200 0.230 0.290 rg BT /F1 8.8 Tf 64.0 407.0 Td (Call page-object/component methods in business order, then assert expected behavior with) Tj ET
+0.200 0.230 0.290 rg BT /F1 8.8 Tf 64.0 395.8 Td (Playwright expect. Keep low-level locator details out of the test when practical.) Tj ET
+0.130 0.180 0.250 rg BT /F2 9.8 Tf 52.0 378.6 Td (8. Add reusable utilities only when appropriate) Tj ET
+0.200 0.230 0.290 rg BT /F1 8.8 Tf 64.0 365.6 Td (Put genuinely shared, non-page-specific behavior in utils/. Keep page-specific actions in) Tj ET
+0.200 0.230 0.290 rg BT /F1 8.8 Tf 64.0 354.4 Td (their page object or component.) Tj ET
+0.130 0.180 0.250 rg BT /F2 9.8 Tf 52.0 337.2 Td (9. Run and refine) Tj ET
+0.200 0.230 0.290 rg BT /F1 8.8 Tf 64.0 324.2 Td (Execute the test and verify locators, navigation, data, and assertions together. Keep the) Tj ET
+0.200 0.230 0.290 rg BT /F1 8.8 Tf 64.0 313.0 Td (test focused on the intended behavior.) Tj ET
+0.100 0.280 0.460 rg BT /F2 12 Tf 48.0 294.8 Td (Short version) Tj ET
+0.94 0.96 0.98 rg 48 240.8 516 43 re f
+0.780 0.840 0.900 RG 0.6 w 48 240.7999999999999 m 564 240.7999999999999 l S
+0.100 0.280 0.460 rg BT /F2 9.2 Tf 60.0 265.8 Td (Business scenario -> pages/components -> required elements -> locators ->) Tj ET
+0.100 0.280 0.460 rg BT /F2 9.2 Tf 60.0 250.8 Td (page-object actions -> data/fixtures as needed -> test actions and assertions -> validation) Tj ET
+0.400 0.440 0.490 rg BT /F1 7.6 Tf 48.0 31.0 Td (Use existing project patterns and code; a test does not need a new class, fixture, or utility for every step.) Tj ET
+endstream
+endobj
+xref
+0 7
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000121 00000 n 
+0000000257 00000 n 
+0000000354 00000 n 
+0000000456 00000 n 
+trailer
+<< /Size 7 /Root 1 0 R >>
+startxref
+4474
+%%EOF
