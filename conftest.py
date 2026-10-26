@@ -3,6 +3,7 @@ import pytest
 pytest_plugins = (
     "listeners.test_listener",
     "fixtures.browser_fixtures",
+    "fixtures.api_fixtures",
     "fixtures.page_fixtures",
     "fixtures.auth_fixtures",
     "fixtures.environment_fixtures",

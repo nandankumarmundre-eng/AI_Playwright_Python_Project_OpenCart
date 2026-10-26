@@ -18,3 +18,4 @@ def test_login_redirects_to_account_page(
         f"{base_url.rstrip('/')}/index.php?route=account/account"
     )
     expect(login_page.account_heading).to_be_visible()
+  

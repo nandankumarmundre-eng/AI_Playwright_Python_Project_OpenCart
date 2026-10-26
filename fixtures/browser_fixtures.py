@@ -1,13 +1,22 @@
 from collections.abc import Generator
 
 import pytest
-from playwright.sync_api import Browser, BrowserType, sync_playwright
+from playwright.sync_api import Browser, BrowserType, Playwright, sync_playwright
 
 from config.playwright_config import get_headless_option
 
 
 @pytest.fixture(scope="session")
-def browser(request: pytest.FixtureRequest) -> Generator[Browser, None, None]:
+def playwright() -> Generator[Playwright, None, None]:
+    # The pytest-playwright plugin is disabled, so provide the shared instance here.
+    with sync_playwright() as playwright_instance:
+        yield playwright_instance
+
+
+@pytest.fixture(scope="session")
+def browser(
+    request: pytest.FixtureRequest, playwright: Playwright
+) -> Generator[Browser, None, None]:
     browser_name = (
         request.config.getoption("--browser")
         or request.config.getini("browser")
@@ -25,20 +34,19 @@ def browser(request: pytest.FixtureRequest) -> Generator[Browser, None, None]:
             else request.config.getini("headed")
         )
     )
-    with sync_playwright() as playwright:
-        browser_types: dict[str, BrowserType] = {
-            "chromium": playwright.chromium,
-            "firefox": playwright.firefox,
-            "webkit": playwright.webkit,
-        }
-        if headed and browser_name == "chromium":
-            browser_instance = browser_types[browser_name].launch(
-                headless=False,
-                args=["--start-maximized"],
-            )
-        else:
-            browser_instance = browser_types[browser_name].launch(
-                headless=get_headless_option(headed)
-            )
-        yield browser_instance
-        browser_instance.close()
+    browser_types: dict[str, BrowserType] = {
+        "chromium": playwright.chromium,
+        "firefox": playwright.firefox,
+        "webkit": playwright.webkit,
+    }
+    if headed and browser_name == "chromium":
+        browser_instance = browser_types[browser_name].launch(
+            headless=False,
+            args=["--start-maximized"],
+        )
+    else:
+        browser_instance = browser_types[browser_name].launch(
+            headless=get_headless_option(headed)
+        )
+    yield browser_instance
+    browser_instance.close()
