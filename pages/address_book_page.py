@@ -4,6 +4,7 @@ from data.web.models import AddressDetails
 from pages.base_page import BasePage
 from pages.locators.address_book_locators import AddressBookLocators
 from utils.playwright_actions import execute_ui_action
+from utils.wait_utils import wait_for_element_enabled
 
 
 class AddressBookPage(BasePage):
@@ -51,8 +52,14 @@ class AddressBookPage(BasePage):
             "select the address country",
             lambda: self.locators.country.select_option(label=address.country),
         )
-        # The region list is reloaded after the country changes; select_option
-        # auto-waits until the requested state option is available.
+        # The site disables the country field while it reloads the regions and
+        # drops a disabled field from the submitted form, so wait for the
+        # reload to finish before touching the region or submitting.
+        execute_ui_action(
+            self.page,
+            "wait for the region list to reload",
+            lambda: wait_for_element_enabled(self.locators.country),
+        )
         execute_ui_action(
             self.page,
             "select the address region",

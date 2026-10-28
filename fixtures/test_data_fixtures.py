@@ -3,6 +3,7 @@ import pytest
 from data.web.models import (
     AddressDetails,
     RegistrationDetails,
+    random_company_name,
     unique_registration_details,
 )
 from utils.data_reader import DataReaderError, read_excel_data
@@ -40,7 +41,7 @@ def address_data() -> AddressDetails:
     return AddressDetails(
         first_name=row["first_name"],
         last_name=row["last_name"],
-        company=row.get("company", ""),
+        company=random_company_name(),
         address_1=row["addr_1"],
         address_2=row.get("addr_2", ""),
         city=row["city"],

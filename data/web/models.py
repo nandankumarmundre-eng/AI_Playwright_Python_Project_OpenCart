@@ -36,6 +36,10 @@ class AddressDetails:
     default_address: bool
 
 
+def random_company_name() -> str:
+    return _FAKER.company()
+
+
 def unique_registration_details() -> RegistrationDetails:
     unique_id = uuid4().hex
     return RegistrationDetails(

@@ -14,7 +14,7 @@ from utils.helpers import login_to_account
 # 6. Save the changes
 # 7. Verify the success message and updated address details
 
-
+@pytest.mark.smoke
 @pytest.mark.e2e
 @pytest.mark.regression
 def test_update_address(
