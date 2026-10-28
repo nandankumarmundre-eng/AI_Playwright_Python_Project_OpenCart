@@ -22,6 +22,20 @@ class RegistrationDetails:
     password: str
 
 
+@dataclass(frozen=True)
+class AddressDetails:
+    first_name: str
+    last_name: str
+    company: str
+    address_1: str
+    address_2: str
+    city: str
+    postcode: str
+    country: str
+    state: str
+    default_address: bool
+
+
 def unique_registration_details() -> RegistrationDetails:
     unique_id = uuid4().hex
     return RegistrationDetails(
