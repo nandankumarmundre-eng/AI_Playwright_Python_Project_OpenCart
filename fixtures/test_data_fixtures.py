@@ -17,3 +17,12 @@ def storefront_product_name() -> str:
             "The first row in 'products' must provide a product_name."
         )
     return product_data[0]["product_name"]
+
+@pytest.fixture
+def wish_list_product_name() -> str:
+    product_data = read_excel_data("checkout_data.xlsx", "products")
+    if not product_data or not product_data[0].get("wish_list"):
+        raise DataReaderError(
+            "The first row in 'products' must provide a wish_list."
+        )
+    return product_data[0]["wish_list"]

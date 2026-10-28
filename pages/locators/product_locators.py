@@ -15,3 +15,14 @@ class ProductLocators:
         self.shopping_cart_link: Locator = self.add_to_cart_success.get_by_role(
             "link", name="shopping cart", exact=True
         )
+        # Bootstrap tooltips strip the title attribute, leaving the icon-only
+        # button without an accessible name, so role/title locators can't match.
+        self.add_to_wish_list_button: Locator = page.locator(
+            "#content .btn-group button[onclick^='wishlist.add']"
+        )
+        self.add_to_wish_list_success: Locator = page.locator(".alert-success")
+        self.wish_list_link: Locator = self.add_to_wish_list_success.get_by_role(
+            "link", name="wish list", exact=True
+        )
+        
+    
