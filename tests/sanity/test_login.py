@@ -5,7 +5,6 @@ from data.web.models import LoginCredentials
 from utils.helpers import login_to_account
 
 
-@pytest.mark.smoke
 @pytest.mark.sanity
 def test_login_redirects_to_account_page(
     page: Page,

@@ -39,13 +39,13 @@ pipeline {
 
         stage('Register Test Account') {
             steps {
-                bat ".venv\\Scripts\\python -m pytest tests/regression/test_register.py --headless --browser ${params.browser}"
+                bat ".venv\\Scripts\\python -m pytest tests/smoke/test_register.py --headless --browser ${params.browser}"
             }
         }
 
         stage('Run Tests') {
             steps {
-                bat ".venv\\Scripts\\python -m pytest --headless --browser ${params.browser} -m \"${params.testgroups}\" --ignore=tests/regression/test_register.py"
+                bat ".venv\\Scripts\\python -m pytest --headless --browser ${params.browser} -m \"${params.testgroups}\" --ignore=tests/smoke/test_register.py"
             }
         }
     }

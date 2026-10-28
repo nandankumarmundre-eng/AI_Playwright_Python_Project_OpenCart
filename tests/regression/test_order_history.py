@@ -6,8 +6,7 @@ from data.web.models import LoginCredentials
 from utils.helpers import login_to_account
 
 
-@pytest.mark.smoke
-@pytest.mark.sanity
+@pytest.mark.regression
 def test_order_history_opens_from_header_after_login(
     page: Page,
     base_url: str,

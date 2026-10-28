@@ -6,8 +6,7 @@ from pages.home_page import HomePage
 from utils.registered_account_data import save_registered_account
 
 
-@pytest.mark.e2e
-@pytest.mark.end_to_end
+@pytest.mark.smoke
 @pytest.mark.regression
 def test_register_new_account_from_my_account_header(
     page: Page, base_url: str, registration_details: RegistrationDetails
