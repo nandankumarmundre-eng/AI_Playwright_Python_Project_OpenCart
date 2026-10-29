@@ -10,6 +10,9 @@ class AddressBookLocators:
         )
         self.address_rows: Locator = content.get_by_role("row")
         self.success_message: Locator = page.locator(".alert-success")
+        self.add_address_button: Locator = page.get_by_role(
+            "link", name="New Address", exact=True
+        )
 
         self.first_name: Locator = page.get_by_label("First Name")
         self.last_name: Locator = page.get_by_label("Last Name")
@@ -30,8 +33,9 @@ class AddressBookLocators:
             "button", name="Continue", exact=True
         )
 
-    def edit_button(self) -> Locator:
-        return self.address_rows.first.get_by_role(
+    @property
+    def edit_buttons(self) -> Locator:
+        return self.address_rows.get_by_role(
             "link", name="Edit", exact=True
         )
 

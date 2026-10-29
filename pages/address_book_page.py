@@ -23,11 +23,22 @@ class AddressBookPage(BasePage):
     def address_row(self, address: AddressDetails) -> Locator:
         return self.locators.address_row(address.address_1, address.postcode)
 
+    def has_saved_addresses(self) -> bool:
+        return self.locators.edit_buttons.count() > 0
+
+    def add_address(self) -> "AddressBookPage":
+        execute_ui_action(
+            self.page,
+            "open the new address form",
+            self.locators.add_address_button.click,
+        )
+        return self
+
     def edit_address(self) -> "AddressBookPage":
         execute_ui_action(
             self.page,
             "open the first address for editing",
-            self.locators.edit_button().click,
+            self.locators.edit_buttons.first.click,
         )
         return self
 

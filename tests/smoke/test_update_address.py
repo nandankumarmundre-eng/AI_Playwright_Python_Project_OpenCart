@@ -28,6 +28,12 @@ def test_update_address(
     address_book = MyAccountPage(page).open_address_book()
     expect(address_book.heading).to_be_visible()
 
+    if not address_book.has_saved_addresses():
+        address_book.add_address().update_address(address_data)
+        expect(address_book.success_message).to_contain_text(
+            "Your address has been successfully added"
+        )
+
     address_book.edit_address().update_address(address_data)
 
     expect(address_book.success_message).to_contain_text(
