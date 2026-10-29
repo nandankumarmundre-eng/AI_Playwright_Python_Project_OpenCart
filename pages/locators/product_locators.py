@@ -20,9 +20,18 @@ class ProductLocators:
         self.add_to_wish_list_button: Locator = page.locator(
             "#content .btn-group button[onclick^='wishlist.add']"
         )
-        self.add_to_wish_list_success: Locator = page.locator(".alert-success")
+        # The alert has no role/test id; filter by its wish list text so a
+        # cart or other success alert can never satisfy the locator.
+        self.add_to_wish_list_success: Locator = page.locator(
+            ".alert-success"
+        ).filter(has_text=f"added {product_name} to your wish list")
         self.wish_list_link: Locator = self.add_to_wish_list_success.get_by_role(
             "link", name="wish list", exact=True
         )
-        
+        self.wish_list_product_link: Locator = (
+            self.add_to_wish_list_success.get_by_role(
+                "link", name=product_name, exact=True
+            )
+        )
+
     

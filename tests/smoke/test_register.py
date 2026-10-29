@@ -7,7 +7,9 @@ from utils.registered_account_data import save_registered_account
 
 
 @pytest.mark.smoke
+@pytest.mark.sanity
 @pytest.mark.regression
+@pytest.mark.e2e
 def test_register_new_account_from_my_account_header(
     page: Page, base_url: str, registration_details: RegistrationDetails
 ) -> None:

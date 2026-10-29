@@ -6,6 +6,7 @@ from utils.helpers import login_to_account
 
 
 @pytest.mark.sanity
+@pytest.mark.smoke
 def test_login_redirects_to_account_page(
     page: Page,
     base_url: str,

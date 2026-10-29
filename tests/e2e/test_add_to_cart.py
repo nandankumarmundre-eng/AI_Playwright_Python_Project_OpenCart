@@ -6,9 +6,8 @@ from utils.logger import get_logger
 
 logger = get_logger(__name__)
 
-
 @pytest.mark.e2e
-@pytest.mark.end_to_end
+@pytest.mark.smoke
 @pytest.mark.regression
 def test_search_add_excel_product_to_cart_and_verify_cart(
     page: Page, base_url: str, storefront_product_name: str

@@ -9,7 +9,7 @@ from api.response_validator import assert_status
 from utils.api_helper import assert_booking_matches, load_json_data
 
 
-@pytest.mark.api
+@pytest.mark.e2e
 def test_create_booking_json(api_request_context: APIRequestContext):
     request_body = load_json_data("booking_request.json")
 

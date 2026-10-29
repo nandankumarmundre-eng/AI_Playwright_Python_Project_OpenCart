@@ -9,9 +9,13 @@ from playwright.sync_api import (
     BrowserContext,
     Error as PlaywrightError,
     Page,
+    expect,
 )
 
 from config.config import EVIDENCE_DIRECTORY, get_config
+from data.web.models import LoginCredentials
+from pages.wish_list_page import WishListPage
+from utils.helpers import login_to_account
 from utils.common_utils import safe_filename
 from utils.logger import get_logger
 from utils.screenshot_utils import save_failure_screenshot
@@ -98,6 +102,23 @@ def page(
                     request.node.nodeid,
                     error,
                 )
+
+
+@pytest.fixture
+def logged_in_with_empty_wish_list(
+    page: Page,
+    base_url: str,
+    login_credentials: LoginCredentials,
+    wish_list_product_name: str,
+) -> Generator[WishListPage, None, None]:
+    login_to_account(page, base_url, login_credentials)
+    wish_list_page = WishListPage(
+        page, wish_list_product_name, base_url
+    ).open()
+    wish_list_page.remove_all_items()
+    expect(wish_list_page.empty_wish_list_message).to_be_visible()
+    yield wish_list_page
+    wish_list_page.open().remove_all_items()
 
 
 def _headed_option(config: pytest.Config) -> bool:

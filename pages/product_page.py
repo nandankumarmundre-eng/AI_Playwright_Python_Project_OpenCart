@@ -44,8 +44,12 @@ class ProductPage(BasePage):
             self.locators.add_to_wish_list_button.click,
         )
         return self
+
     def add_to_wish_list_success(self) -> Locator:
         return self.locators.add_to_wish_list_success
+
+    def wish_list_product_link(self) -> Locator:
+        return self.locators.wish_list_product_link
 
     def wish_list_link(self) -> Locator:
         return self.locators.wish_list_link

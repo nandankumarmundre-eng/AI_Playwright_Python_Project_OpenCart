@@ -4,6 +4,8 @@ from playwright.sync_api import Page, expect
 from pages.home_page import HomePage
 
 
+@pytest.mark.e2e
+@pytest.mark.smoke
 @pytest.mark.regression
 def test_search_product_displays_matching_product(
     page: Page, base_url: str, storefront_product_name: str
