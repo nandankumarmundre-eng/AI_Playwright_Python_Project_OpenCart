@@ -24,6 +24,15 @@ class AddressBookPage(BasePage):
         return self.locators.address_row(address.address_1, address.postcode)
 
     def edit_address(self) -> "AddressBookPage":
+        # A freshly registered account has no saved address to edit, so
+        # open the new-address form, which uses the same fields.
+        if self.locators.edit_button().count() == 0:
+            execute_ui_action(
+                self.page,
+                "open the new address form",
+                self.locators.new_address_button().click,
+            )
+            return self
         execute_ui_action(
             self.page,
             "open the first address for editing",
