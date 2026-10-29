@@ -1,4 +1,4 @@
-from playwright.sync_api import Page
+from playwright.sync_api import Page, Locator
 
 from pages.locators.search_locators import HomeSearchLocators
 from utils.playwright_actions import execute_ui_action
