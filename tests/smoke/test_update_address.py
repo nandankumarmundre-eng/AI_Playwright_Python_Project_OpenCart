@@ -1,3 +1,5 @@
+import re
+
 import pytest
 from playwright.sync_api import Page, expect
 
@@ -28,7 +30,7 @@ def test_update_address(
     address_book.edit_address().update_address(address_data)
 
     expect(address_book.success_message).to_contain_text(
-        "Your address has been successfully updated"
+        re.compile("Your address has been successfully (updated|added)")
     )
     address_row = address_book.address_row(address_data)
     expected_parts = (

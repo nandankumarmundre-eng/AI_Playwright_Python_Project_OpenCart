@@ -35,6 +35,11 @@ class AddressBookLocators:
             "link", name="Edit", exact=True
         )
 
+    def new_address_button(self) -> Locator:
+        return self.page.locator("#content").get_by_role(
+            "link", name="New Address", exact=True
+        )
+
     def address_row(self, address_1: str, postcode: str) -> Locator:
         return self.address_rows.filter(has_text=address_1).filter(
             has_text=postcode
